@@ -1,0 +1,12 @@
+
+.ant-menu-submenu-title{
+    height: 60px!important;
+    line-height: 60px!important;
+    font-size: 16px!important;
+}
+.ant-menu-submenu-title i{
+    font-size: 20px!important;
+}
+.ant-menu-submenu:hover{
+    background: #F2F6FC !important;
+}
