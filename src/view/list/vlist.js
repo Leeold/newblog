@@ -23,7 +23,7 @@ class InfiniteListExample extends React.Component {
     }
     componentDidMount(){
         this.fetchData((res) => {
-            console.log(res);
+            // console.log(res);
             this.setState({
                 data: res,
             });
@@ -47,7 +47,7 @@ class InfiniteListExample extends React.Component {
         };
         axios.post('/api/article/getAll',qs.stringify(data))
             .then((res)=>{
-                console.log(res);
+                // console.log(res);
                 this.setState({
                     topLoading: false,
                     totalSize:res.data.data.total
@@ -73,7 +73,7 @@ class InfiniteListExample extends React.Component {
         }
         this.fetchData((res) => {
             data = data.concat(res);
-            console.log(data);
+            // console.log(data);
             setTimeout(()=>{
                 this.setState({
                      data,

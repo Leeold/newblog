@@ -10,6 +10,11 @@ const List = (props) => (
         {(List) => <List {...props}/>}
     </Bundle>
 )
+const SearchList = (props) => (
+    <Bundle load={() => import('../list/searchList')}>
+        {(List) => <List {...props}/>}
+    </Bundle>
+)
 const Java = (props) => (
     <Bundle load={() => import('../java/java')}>
         {(Java) => <Java {...props}/>}
@@ -47,6 +52,7 @@ class main extends Component{
                             {/*<Redirect to="/main/list" />*/}
                         {/*)} />*/}
                         <Route path="/main/list" component={List}/>
+                        <Route path="/main/searchList" component={SearchList}/>
                         <Route path="/main/java" component={Java}/>
                         <Route path="/main/front" component={Front}/>
                         <Route path="/main/detail/:id" component={Detail}/>

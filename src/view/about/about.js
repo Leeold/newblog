@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import "./about.scss"
+import "./about.scss";
 import AboutItem from "./aboutItem";
+import ArticleAnalysis from '../dataAnalysis/articleNum/dataAnalysis';
+import BrowseAnalysis from '../dataAnalysis/browseNum/browse_num';
 class about extends Component{
     render(){
         return(
@@ -12,6 +14,11 @@ class about extends Component{
                 <h2>技能树：</h2>
                 <AboutItem/>
                 <h2>数据统计：</h2>
+                <div className='data_analysis'>
+                    <ArticleAnalysis/>
+                    <BrowseAnalysis/>
+                </div>
+
             </div>
         )
     }
