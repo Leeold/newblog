@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Item from "../item/item";
-import {Switch,Route,Redirect} from "react-router-dom";
+import {Switch,Route} from "react-router-dom";
 import Bundle from '../../utils/bundle';
 import MainHeader from "../header/main-header";
 import "../index.css";

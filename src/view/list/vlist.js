@@ -9,7 +9,7 @@ import './vlist.scss'
 import InfiniteScroll from 'react-infinite-scroller';
 import axios from "axios";
 const antIcon = <Icon type="sync" style={{ fontSize: 30 }} spin />;
-class InfiniteListExample extends React.Component {
+class InfiniteListExample extends Component {
     constructor(arg){
         super(arg)
         this.state={
@@ -97,10 +97,10 @@ class InfiniteListExample extends React.Component {
         };
         axios.post('/api/article/browse',qs.stringify(data))
             .then((res)=>{
-                console.log(res);
+                // console.log(res);
             })
             .catch((error)=>{
-                console.log(error);
+                // console.log(error);
             })
     };
     render() {

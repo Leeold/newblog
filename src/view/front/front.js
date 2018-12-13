@@ -22,7 +22,7 @@ class front extends Component{
     }
     componentDidMount(){
         this.fetchData((res) => {
-            console.log(res);
+            // console.log(res);
             this.setState({
                 data: res,
             });
@@ -38,7 +38,7 @@ class front extends Component{
         };
         axios.post('/api/article/back/list',qs.stringify(data))
             .then((res)=>{
-                console.log(res);
+                // console.log(res);
                 this.setState({
                     topLoading: false,
                     totalSize:res.data.data.total
@@ -46,7 +46,7 @@ class front extends Component{
                 callback(res.data.data.list);
             })
             .catch((error)=>{
-                console.log(error);
+                // console.log(error);
             })
     }
     handleInfiniteOnLoad = () => {
@@ -63,7 +63,7 @@ class front extends Component{
         }
         this.fetchData((res) => {
             data = data.concat(res);
-            console.log(data);
+            // console.log(data);
             setTimeout(()=>{
                 this.setState({
                     data,
@@ -80,7 +80,7 @@ class front extends Component{
         };
         axios.post('/api/article/browse',qs.stringify(data))
             .then((res)=>{
-                console.log(res);
+                // console.log(res);
             })
             .catch((error)=>{
                 console.log(error);
