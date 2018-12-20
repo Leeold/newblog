@@ -3,7 +3,20 @@ import "./about.scss";
 import AboutItem from "./aboutItem";
 import ArticleAnalysis from '../dataAnalysis/articleNum/dataAnalysis';
 import BrowseAnalysis from '../dataAnalysis/browseNum/browse_num';
+import {Queue} from '../../utils/helper';
 class about extends Component{
+    componentDidMount(){
+    let queue = new Queue();
+        queue.then(1000, () => {
+            console.log(1);
+        })
+        queue.then(3000, () => {
+            console.log(2);
+        })
+        queue.then(5000, () => {
+            console.log(3);
+        })
+    }
     render(){
         return(
             <div className="about_wrap">
