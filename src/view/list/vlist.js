@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import {Link} from "react-router-dom";
 import {List, Spin,Icon} from 'antd';
 import {connect} from "react-redux";
-import qs from 'qs';
+import http from '../../utils/http';
 import fmtDate from "../../utils/converseTime"
 import './list.css';
 import './vlist.scss'
 import InfiniteScroll from 'react-infinite-scroller';
-import axios from "axios";
 const antIcon = <Icon type="sync" style={{ fontSize: 30 }} spin />;
 class InfiniteListExample extends Component {
     constructor(arg){
@@ -22,6 +21,8 @@ class InfiniteListExample extends Component {
         }
     }
     componentDidMount(){
+        // localStorage.setItem('token','fasdfasdfadsfasd');
+        //  localStorage.removeItem('token');
         this.fetchData((res) => {
             // console.log(res);
             this.setState({
@@ -45,18 +46,13 @@ class InfiniteListExample extends Component {
         let data={
              "page":this.state.page,
         };
-        axios.post('/api/article/getAll',qs.stringify(data))
-            .then((res)=>{
-                // console.log(res);
-                this.setState({
-                    topLoading: false,
-                    totalSize:res.data.data.total
-                });
-                callback(res.data.data.list);
-            })
-            .catch((error)=>{
-                console.log(error);
-            })
+        http.post('/api/article/getAll',data).then((res)=>{
+                    this.setState({
+                        topLoading: false,
+                        totalSize:res.data.data.total
+                    });
+                    callback(res.data.data.list);
+        });
     };
 
     handleInfiniteOnLoad = () => {
@@ -95,13 +91,7 @@ class InfiniteListExample extends Component {
             "id":id,
             "clickNum":clickNum
         };
-        axios.post('/api/article/browse',qs.stringify(data))
-            .then((res)=>{
-                // console.log(res);
-            })
-            .catch((error)=>{
-                // console.log(error);
-            })
+        http.post('/api/article/browse',data)
     };
     render() {
         const {data} =this.props;
