@@ -205,3 +205,27 @@ export function binary_search(arrs,low,height,value) {
 }
 // var arrs = [1,2,3,4,5,6,7,8,9,10,11,23,44,86];
 // var result = binary_search(arrs,0,arrs.length -1,10);
+
+// 输入一个链表，从尾到头打印链表每个节点的值。
+export function print(head) {
+    let arr = [];
+    let node = head;
+    while (node !== null){
+        arr.unshift(node.val());
+        node = node.next;
+    }
+    return arr;
+}
+
+//深拷贝
+export function deepCopy( source ) {
+    let target = Array.isArray( source ) ? [] : {}
+    for ( var k in source ) {
+        if ( typeof source[ k ] === 'object' ) {
+            target[ k ] = deepCopy( source[ k ] )
+        } else {
+            target[ k ] = source[ k ]
+        }
+    }
+    return target
+}
