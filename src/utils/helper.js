@@ -217,7 +217,7 @@ export function print(head) {
     return arr;
 }
 
-//深拷贝
+//js深拷贝
 export function deepCopy( source ) {
     let target = Array.isArray( source ) ? [] : {}
     for ( var k in source ) {
@@ -229,3 +229,41 @@ export function deepCopy( source ) {
     }
     return target
 }
+
+// 打平数组和规定深度的打平数组
+
+export function flattenArr(arr) {
+
+    let result = [];
+
+    function flatten(arr) {
+        for(let i = 0; i<arr.length; i++){
+            if(Array.isArray(arr[i])){
+                flatten(arr[i]);
+            }else{
+                result.push(arr[i]);
+            }
+        }
+    }
+    flatten(arr);
+    return result;
+}
+
+[1, 2, [3, [4, 5]]].flat()
+// [1, 2, 3, [4, 5]]
+
+    [1, 2, [3, [4, 5]]].flat(2)
+// [1, 2, 3, 4, 5]
+
+    [1, [2, [3]]].flat(Infinity)
+// [1, 2, 3]
+
+//如果原数组有空位，flat()方法会跳过空位
+    [1, 2, , 4, 5].flat()
+// [1, 2, 4, 5]
+
+
+
+
+
+
