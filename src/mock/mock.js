@@ -1,4 +1,17 @@
 import Mock from "mockjs";
+// // 返回随机个数的对象
+// Mock.mock('/api/getObject', (req, res) => {
+//     return Mock.mock({
+//         'brand|1-3': {
+//             a: '京东',
+//             b: '国美',
+//             c: '苏宁',
+//             d: '当当',
+//             e: '天猫',
+//             f: '淘宝'
+//         }
+//     })
+// })
 
 Mock.mock(
      "/course/url",
