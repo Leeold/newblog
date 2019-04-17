@@ -49,6 +49,78 @@ function replace(str) {
     }
 
     return newStr;
-
-    return newStr;
 }
+
+/**
+ * 大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项（从0开始，第0项为0）。
+ n<=39
+ */
+function feibonacii(n) {
+    let first = 1;
+    let second = 1;
+    let third = 0;
+    for(let i = 3; i<n; i++){
+        third = first+second;
+        first = second;
+        second = third;
+    }
+    return third;
+}
+
+/**
+ * js 用reduce 实现map 函数
+ */
+
+Array.prototype.map=function (callback) {
+
+    let arr = this;
+    return arr.reduce((pre,current,index)=>{
+        pre.push(callback(current));
+        return pre;
+    },[])
+
+}
+
+let result = [1,2,3,4,5].map((item,index)=>{
+    return item * item;
+});
+
+/**
+ * 二叉树的先序遍历 先遍历根节点 再遍历左子树，再遍历右子树，
+ */
+
+function treeNode(val) {
+    this.val = val;
+    this.left=null;
+    this.right=null;
+}
+
+function preOrder(root) {
+    if(root){
+        console.log(root.val);
+        preOrder(root.left);
+        preOrder(root.right);
+    }
+}
+/**
+ * 二叉树的中序遍历  先遍历左子树，再遍历根节点，再遍历右子树
+ */
+function inOrder(root) {
+    if(root){
+        console.log(root.val);
+        inOrder(root.left);
+        inOrder(root.right);
+    }
+}
+
+/**
+ * 二叉树的后续遍历  先遍历 左子树，再遍历右子树，再遍历根节点
+ */
+function inOrder(root) {
+    if(root){
+        inOrder(root.left);
+        inOrder(root.right);
+        console.log(root.val);
+    }
+}
+
