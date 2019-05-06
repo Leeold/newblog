@@ -262,6 +262,49 @@ export function flattenArr(arr) {
 //     [1, 2 , 4, 5].flat()
 // // [1, 2, 4, 5]
 
+/**
+ * 函数防抖
+ * 防抖的意思可以认为是，阻止连续的抖动（所谓的事件触发），也就是说，我们用防抖来让那些连续触发的事件只触发一次。
+ * 防抖实现起来的思路是，用闭包保存执行的函数，多次执行的时候把上一个执行的函数清除掉，然后再次创建一个新的函数。这样在间隔时间内还有事件触发的话，不会执行之前的函数，这么一来，函数真正的执行就是最后一次事件触发。
+ * @param fn
+ * @param times
+ * @returns {Function}
+ */
+
+export function debounce(fn,times){
+       let timeout = null
+       return function(){
+           console.log(arguments);
+           console.log(this);
+           clearTimeout(timeout)
+           timeout = setTimeout(()=>{
+               fn.apply(this,arguments)
+           },times)
+       }
+   }
+
+/**
+ * 函数节流
+ * 设置一个阀值（制定一个时间），在这个阀值或者时间之内，函数只会执行一次。
+ * @param fn
+ * @param times
+ * @returns {Function}
+ */
+export function throttle(fn,times){
+    let bool = true
+    return function(){
+        if(!bool){
+            return false
+        }
+        bool = false;
+        setTimeout(()=>{
+            bool = true;
+            fn.apply(this,arguments)
+        },times)
+    }
+
+}
+
 
 
 

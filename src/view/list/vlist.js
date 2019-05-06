@@ -47,6 +47,7 @@ class InfiniteListExample extends Component {
              "page":this.state.page,
         };
         http.post('/api/article/getAll',data).then((res)=>{
+            console.log(res);
                     this.setState({
                         topLoading: false,
                         totalSize:res.data.data.total

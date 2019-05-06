@@ -4,10 +4,10 @@ import Router from "./router/index";
 
 class App extends Component {
   render() {
-    // return <Router/>
-    return <div className="pageWrap">
-                 <Router/>
-           </div>;
+    return <Router/>
+    // return <div className="pageWrap">
+    //              <Router/>
+    //        </div>;
   }
 }
 

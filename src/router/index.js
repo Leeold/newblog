@@ -7,12 +7,12 @@ class RouterIndex extends Component{
     render(){
         return (
             <Switch>
-                {/*<Route path="/" exact render={()=>(*/}
-                    {/*<Redirect to="/main/list" />*/}
-                {/*)} />*/}
+                <Route path="/" exact render={()=>(
+                    <Redirect to="/main/list" />
+                )} />
                 <Route exact path="/index" component={Index}/>
                 <Route path="/main" component={Main}/>
-                <Route path="/" component={Demo} />
+                <Route path="/demo" component={Demo} />
             </Switch>
         );
     }

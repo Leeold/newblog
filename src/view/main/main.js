@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Switch,Route} from "react-router-dom";
+import {Switch,Route,Redirect} from "react-router-dom";
 import Bundle from '../../utils/bundle';
 import MainHeader from "../header/main-header";
 import "../index.css";
@@ -47,9 +47,9 @@ class main extends Component{
             <main className="main">
                 <div className="main_right">
                     <Switch>
-                        {/*<Route path="/" exact render={()=>(*/}
-                            {/*<Redirect to="/main/list" />*/}
-                        {/*)} />*/}
+                        <Route path="/" exact render={()=>(
+                            <Redirect to="/main/list" />
+                        )} />
                         <Route path="/main/list" component={List}/>
                         <Route path="/main/searchList" component={SearchList}/>
                         <Route path="/main/java" component={Java}/>
