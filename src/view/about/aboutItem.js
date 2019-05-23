@@ -14,7 +14,7 @@ class aboutItem extends Component{
                 {
                     data.map((item,i)=>{
                         return (
-                            <a className="style_span" href="" key={i}>{item}</a>
+                            <span className="style_span" href="" key={i}>{item}</span>
                             )
 
                     })

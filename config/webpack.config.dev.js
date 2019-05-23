@@ -17,8 +17,9 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin-alt');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
-
-
+//添加happypack优化打包速度
+const HappyPack = require('happypack');
+const happyThreadPool = HappyPack.ThreadPool({ size: 5 });
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
 const publicPath = '/';
@@ -334,6 +335,21 @@ module.exports = {
       },
       // ** STOP ** Are you adding a new loader?
       // Make sure to add the new loader(s) before the "file" loader.
+      //happypack 配置
+        {
+            test: /\.js$/,
+            //把对.js 的文件处理交给id为happyBabel 的HappyPack 的实例执行
+            loader: 'happypack/loader?id=1',
+            //排除node_modules 目录下的文件
+            exclude: /node_modules/
+        },
+        {
+            test: /\.js$/,
+            //把对.js 的文件处理交给id为happyBabel 的HappyPack 的实例执行
+            loader: 'happypack/loader?id=2',
+            //排除node_modules 目录下的文件
+            exclude: /node_modules/
+        },
     ],
   },
   plugins: [
@@ -377,6 +393,35 @@ module.exports = {
       fileName: 'asset-manifest.json',
       publicPath: publicPath,
     }),
+  //happypack配置
+  new HappyPack({
+      //用id来标识 happypack处理那里类文件
+      id: '1',
+      //如何处理  用法和loader 的配置一样
+      loaders: [{
+          loader: 'babel-loader?cacheDirectory=true',
+      }],
+      //共享进程池
+      threads: 4,
+      threadPool: happyThreadPool,
+      //允许 HappyPack 输出日志
+      verbose: true,
+  }),
+  new HappyPack({
+      //用id来标识 happypack处理那里类文件
+      id: '2',
+      //如何处理  用法和loader 的配置一样
+      loaders: [{
+          loader: 'babel-loader?cacheDirectory=true',
+      }],
+      threads: 4,
+      //共享进程池
+      threadPool: happyThreadPool,
+      //允许 HappyPack 输出日志
+      verbose: true,
+      verboseWhenProfiling:true,
+      debug:true
+  }),
     // TypeScript type checking
     useTypeScript &&
       new ForkTsCheckerWebpackPlugin({

@@ -305,6 +305,63 @@ export function throttle(fn,times){
 
 }
 
+/**
+ * js 数组去重
+ */
+let arr = [2,3,45,1,23,4,5,5];
+let s = new Set(arr);
+let arr1 = Array.from(s);
+
+let uniq = (arr)=>{
+
+    let temp = [];
+    arr.forEach((item)=>{
+        if(temp.indexOf(item) === -1){
+            temp.push(item);
+        }
+    });
+    return temp;
+};
+
+console.log(uniq(arr));
+
+/**
+ * 输入一个链表，输入该链表中倒数第k个节点
+ */
+
+function print(head,k) {
+    let node = head;
+    let num = 0;
+    while (node !== null){
+        num++;
+        node = node.next;
+    }
+    if(num < k ){ return null;}
+    let a = head;
+    for(let i=0;i< num-k;i++){
+        a = a.next;
+    }
+    return a;
+}
+
+class node {
+    constructor(value,next){
+        this.value = value;
+        this.next = null;
+    };
+}
+let p1 = new node(1);
+let p2 = new node(2);
+let p3 = new node(3);
+let p4 = new node(4);
+let p5 = new node(5);
+let p6 = new node(6);
+p1.next = p2;
+p2.next= p3;
+p3.next= p4;
+p4.next= p5;
+p5.next= p6;
+console.log(print(p1,2));
 
 
 
