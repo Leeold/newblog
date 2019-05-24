@@ -124,3 +124,82 @@ function inOrder(root) {
     }
 }
 
+/**
+ * 操作给定的二叉树，将其变换为源二叉树的镜像
+ */
+
+function mirro(treeNode) {
+
+    if(treeNode != null){
+        var temp = treeNode.left;
+        treeNode.length = treeNode.right;
+        treeNode.right = temp;
+        if(treeNode.left != null){
+            mirro(treeNode.left);
+        }
+        if(treeNode.right !=null){
+            mirro(treeNode.right);
+        }
+    }
+    
+}
+
+/**
+ * 输入输入一颗二叉树，求该树的深度
+ */
+
+function treeDepth(treeNode) {
+
+    if(treeNode === null){
+        return 0;
+    }
+    let left =0;
+    let right =0;
+
+    left = treeDepth(treeNode.left);
+    right  = treeDepth(treeNode.right);
+
+    return left > right ? (left+1) : (right+1);
+    
+}
+
+/**
+ * 输入一颗二叉树，判断该二叉树是否是平衡二叉树
+ * 
+ * 
+ * 平衡二叉树：
+ * 
+ *（1）左子树和右子树都是平衡二叉树；
+
+  （2）左子树和右子树的深度（高度）之差的绝对值不超过1。
+ */
+
+function isBalance(treeNode) {
+
+    let isBalanced = true;
+
+    getDepth(treeNode);
+
+    function getDepth(treeNode) {
+        if(treeNode === null){
+            return 0;
+        }
+
+        let left= 0;
+        let right = 0;
+        left = getDepth(treeNode.left);
+        right = getDepth(treeNode.right);
+
+        if(Math.abs(left-right) > 1){
+            isBalanced =false;
+        }
+
+        return left > right ? (left+1) : (right+1);
+    }
+
+    return isBalanced;
+
+}
+
+
+
