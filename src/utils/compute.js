@@ -132,7 +132,7 @@ function mirro(treeNode) {
 
     if(treeNode != null){
         var temp = treeNode.left;
-        treeNode.length = treeNode.right;
+        treeNode.left = treeNode.right;
         treeNode.right = temp;
         if(treeNode.left != null){
             mirro(treeNode.left);
@@ -198,6 +198,60 @@ function isBalance(treeNode) {
     }
 
     return isBalanced;
+
+}
+
+
+/**
+ * 请事先一个函数，判断一颗二叉树是不是对称的，
+ * 如果一颗二叉树，同此二叉树的镜像是相同的，定义其为对称的，
+ * (左子树中每个节点的左孩子 = 同层右子树中每个节点的右孩子 && 左子树中每个节点的右孩子 = 同层右子树中每个节点的左孩子)
+ *
+ */
+
+function isSymmetry(treeNode) {
+
+    if(treeNode == null){return true};
+    isSymmetrical(treeNode.left,treeNode.right);
+    
+}
+
+function isSymmetrical(left,right) {
+    if(left == null && right == null){
+        return true;
+    }
+    if(left ==null || right == null){
+        return false;
+    }
+
+    return left.val === right.val && isSymmetrical(left.left === right.right) && isSymmetrical(left.right === right.left);
+
+}
+
+/**
+ * 从上往下打印二叉树，同层节点从左往右打印
+ */
+
+
+function printNOde(treeNode) {
+
+    let arr = [];
+    let data =[];
+    if(treeNode !== null){
+        arr.push(treeNode);
+    }
+    while (arr.length !== 0){
+        var node = arr.shift();
+        if(node.left !== null){
+            arr.push(node.left);
+        }
+        if(node.right!== null){
+            arr.push(node.right);
+        }
+        data.push(node.val);
+    }
+
+    return data;
 
 }
 
