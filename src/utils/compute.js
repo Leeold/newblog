@@ -312,4 +312,27 @@ function lj(i,j) {
     }
 }
 
+/**
+ *给一个数组返回它的最大连续子序列的和
+ */
+var arr = [6,-3,-2,7,-15,1,2,2];
+
+function maxNum(arr) {
+
+    if(arr.length == 0){
+        return 0;
+    }
+
+    let result = arr[0];
+    let max = arr[0];
+
+    for(let i=1;i<arr.length;i++){
+        max = Math.max(max+arr[i],arr[i]);
+        result = Math.max(max,result);
+    }
+
+    return result;
+
+}
+
 
