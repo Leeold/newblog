@@ -377,4 +377,70 @@ function print(node) {
 
 }
 
+/**
+ * 无重复字符的最长子串
+ 给定一个字符串，找出不含有重复字符的最长子串的长度。
+
+ 示例：
+
+ 给定 "abcabcbb" ，没有重复字符的最长子串是"abc"，那么长度就是3。
+
+ 给定 "bbbbb" ，最长的子串就是 "b"，长度是1。
+
+ 给定 "pwwkew"，最长子串是"wke"，长度是3。请注意答案必须是一个子串，"pwke"是 子序列 而不是子串。
+ */
+
+function longStr(s) {
+    var res = 0; // 用于存放当前最长无重复子串的长度
+    var str = ""; // 用于存放无重复子串
+    var len = s.length;
+    for(var i = 0; i < len; i++) {
+        var char = s.charAt(i);
+        var index = str.indexOf(char);
+        if(index === -1) {
+            str += char;
+            res = res < str.length ? str.length : res;
+        } else {
+            console.log(str);
+            str = str.substr(index + 1) + char;
+        }
+    }
+    return res;
+
+}
+
+/**
+ * 两个有序数组合并为一个有序数组
+ */
+
+function concat(arr1,arr2) {
+
+    let num1 =arr1;
+    let num2 =arr2;
+    //变量用于存储两个集合应该被比较的索引（存入新集合就加一）
+    let a = 0;
+    let b= 0;
+    let newArr = [];
+    for(let i=0;i<num1.length+num2.length;i++){//两数组都未遍历完，相互比较后加入
+        if(a<num1.length && b<num2.length){
+            if(num1[a]>num2[b]){
+                newArr[i] = num2[b];
+                b++;
+
+            }else{
+                newArr[i] = num1[a];
+                a++
+            }
+        }else if (a < num1.length) {   //num2已经遍历完，无需比较，直接将剩余num1加入
+            newArr[i] = num1[a];
+            a++;
+        } else if (b < num2.length) {    //num1已经遍历完，无需比较，直接将剩余num2加入
+            newArr[i] = num2[b];
+            b++;
+        }
+    }
+    return newArr;
+
+}
+
 
