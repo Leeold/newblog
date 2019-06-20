@@ -68,3 +68,42 @@ function find(listNode,k) {
 
     return last;
 }
+
+/**
+ * 给一个链表，若其中包含环，请找出链表环的入口地点，否则输出null
+ * @param args
+ *
+ */
+
+function listLoop(listNode) {
+    if(listNode === null || listNode.next === null){
+        return null;
+    }
+    let isLoop = false;
+    let pre = listNode;
+    let last = listNode;
+    while (last !==null && last.next !== null ){
+        pre = pre.next;
+        last = last.next.next;
+        if(pre === last){
+            isLoop = true;
+            break;
+        }
+    }
+
+    if(isLoop){
+        pre = listNode;
+        while (last !==null && last.next !==null){
+            if(pre === last){
+                return pre;
+            }
+
+            pre = pre.next;
+            last = last.next;
+        }
+    }
+
+    return null;
+
+
+}
