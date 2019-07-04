@@ -185,6 +185,15 @@ export function isPalindrome(line) {
     }
     return true;  //是回文
 }
+export function isBack(str) {
+
+    if(typeof str !== "string"){
+        return false;
+    }
+
+    return str.split("").reverse().join("") === str;
+
+}
 //js 二分查找算法*****************************
 
 //非递归算法
