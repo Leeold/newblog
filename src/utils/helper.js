@@ -304,17 +304,17 @@ export function flattenArr(arr) {
  * @returns {Function}
  */
 
-export function debounce(fn,times){
-       let timeout = null
-       return function(){
-           console.log(arguments);
-           console.log(this);
-           clearTimeout(timeout)
-           timeout = setTimeout(()=>{
-               fn.apply(this,arguments)
-           },times)
-       }
-   }
+export function debounce(fun, delay) {
+    return function () {
+        let that = this;
+        let _args = arguments;
+        console.log(_args);
+        clearTimeout(fun.timer)
+        fun.timer = setTimeout(function () {
+            fun.apply(that, arguments)
+        }, delay)
+    }
+}
 
 /**
  * 函数节流
