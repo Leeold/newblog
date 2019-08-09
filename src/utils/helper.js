@@ -403,7 +403,7 @@ console.log(print(p1,2));
 function twoSum(arr,target) {
 
     let map  = new Map();
-    for(let i=0;i,arr.length;i++){
+    for(let i=0;i<arr.length;i++){
         if(map.has(target-arr[i])){
             return [map.get(target-arr[i]),i];
         }else{
