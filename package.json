@@ -132,5 +132,5 @@
   "devDependencies": {
     "babel-plugin-import": "^1.11.0"
   },
-  "proxy": "http://localhost:8080"
+  "proxy": "http://192.168.0.74"
 }

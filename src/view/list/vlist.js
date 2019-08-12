@@ -46,13 +46,13 @@ class InfiniteListExample extends Component {
         let data={
              "page":this.state.page,
         };
-        http.get('/api/article/getAll',data).then((res)=>{
+        http.post('/cjdd-course/course/query').then((res)=>{
             console.log(res);
-                    this.setState({
-                        topLoading: false,
-                        totalSize:res.data.data.total
-                    });
-                    callback(res.data.data.list);
+                    // this.setState({
+                    //     topLoading: false,
+                    //     totalSize:res.data.data.total
+                    // });
+                    // callback(res.data.data.list);
         });
     };
 

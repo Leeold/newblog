@@ -413,5 +413,22 @@ function twoSum(arr,target) {
 
 }
 
+/**
+ * 随机打乱一个数组
+ */
+function randomArray(arr) {
+
+    if(arr.length ===0){
+        return [];
+    }
+
+    for(let i=arr.length-1;i>0;i--){
+        let j = Math.floor(Math.random() * (i+1));
+        [arr[i],arr[j]] = [arr[j],arr[i]]
+    }
+
+    return arr;
+
+}
 
 
