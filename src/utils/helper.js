@@ -432,3 +432,89 @@ function randomArray(arr) {
 }
 
 
+/**
+ * 用链表实现一个队列
+ */
+function LinkQueue(){
+    this.length = 0;
+    this.front = null;//队头
+    this.rear = null;//队尾
+};
+LinkQueue.prototype.Node = function(el){
+    this.element = el;
+    this.next = null;
+}
+//入队
+LinkQueue.prototype.push = function(el){
+    var current = null,
+        node = new this.Node(el);
+    if(this.length == 0){
+        this.length++;
+        this.front = this.rear = node;
+        return true;
+    }else{
+        current = this.rear;
+        current.next = node;
+        this.rear = node;
+        this.length++;
+        return true;
+    }
+};
+
+//出队
+LinkQueue.prototype.pop = function(){
+    var current = null;
+    if(this.length != 0){
+        current = this.front;
+        this.front = current.next;
+        this.length--;
+        return true;
+    }else{
+        return null;
+    }
+};
+
+LinkQueue.prototype.toString = function(){
+    var str = "",
+        current = this.front;
+
+    while(current){
+        str += current.element + " ";
+        current = current.next;
+    }
+
+    return str;
+};
+
+//清空队列
+LinkQueue.prototype.clear = function(){
+    this.front = this.rear = null;
+    this.length =0;
+    return true;
+};
+
+/***************测试代码******************/
+function test(){
+    var linkQueue = new LinkQueue();
+
+    //压栈
+    for(var i=1;i<21;i++){
+        linkQueue.push(i);
+    }
+    console.log("压栈->" + linkQueue.toString());
+
+    //退栈
+    linkQueue.pop();
+    linkQueue.pop();
+    linkQueue.pop();
+    console.log("退栈->" + linkQueue.toString());
+
+    //清空栈
+    linkQueue.clear();
+    console.log("清空栈->" + linkQueue.toString());
+
+}
+
+test();
+
+
