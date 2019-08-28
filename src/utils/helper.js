@@ -362,7 +362,7 @@ console.log(uniq(arr));
  * 输入一个链表，输入该链表中倒数第k个节点
  */
 
-function print(head,k) {
+export function print1(head,k) {
     let node = head;
     let num = 0;
     while (node !== null){

@@ -26,6 +26,18 @@
       You need to enable JavaScript to run this app.
     </noscript>
     <div id="root"></div>
+    <script>
+      (function () {
+        var html = document.documentElement;
+
+        function onWindowResize() {
+          html.style.fontSize = html.getBoundingClientRect().width / 10 + 'px';
+        }
+
+        window.addEventListener('resize', onWindowResize);
+        onWindowResize();
+      })();
+    </script>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
