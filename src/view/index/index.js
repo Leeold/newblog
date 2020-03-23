@@ -1,15 +1,14 @@
 
  import React, { useEffect } from 'react';
  import "./index.scss";
- import {cloneDeep} from 'lodash';
+ import {difference} from 'lodash';
  function Index() {
      useEffect(() =>{
-        console.log(document.documentElement.getBoundingClientRect().width);
+        console.log(difference([3, 2, 1], [4, 2]));
      })
      let divStyle = {
         width:'2.66rem',
         height:'2.66rem',
-        background:'red'
      }
      return (
          <React.Fragment>
@@ -20,5 +19,4 @@
          </React.Fragment>
      );
  }
-
  export default Index;
