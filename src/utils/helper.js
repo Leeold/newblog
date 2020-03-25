@@ -421,7 +421,6 @@ function randomArray(arr) {
     if(arr.length ===0){
         return [];
     }
-
     for(let i=arr.length-1;i>0;i--){
         let j = Math.floor(Math.random() * (i+1));
         [arr[i],arr[j]] = [arr[j],arr[i]]
@@ -431,6 +430,20 @@ function randomArray(arr) {
 
 }
 
+/**
+ * 随机洗牌算法
+ *
+ */
+Array.prototype.shuffle = function () {
+    let input = this;
+    for (let i = input.length - 1; i >= 0; i--) {
+        let randomIndex = Math.floor(Math.random() * (i + 1));
+        let itemAtIndex = input[randomIndex];
+        input[randomIndex] = input[i];
+        input[i] = itemAtIndex;
+    }
+    return input;
+}
 
 /**
  * 用链表实现一个队列
